@@ -1,9 +1,9 @@
 /* eslint-disable max-len, no-underscore-dangle */
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-
+import scrollflyto from '../../constants/scrollflyto'
 import styled from 'style'
 import { hasWindow } from 'util/dom'
 import { getCenterAndZoom } from './util'
@@ -51,7 +51,46 @@ const Map = ({
   // this ref holds the map object once we have instantiated it, so that we
   // can use it in other hooks
   const mapRef = useRef(null)
+  /*
+  const [scrollPosition, setSrollPosition] = useState(0)
+  const handleScroll = () => {
+    var activeName = scrollflyto[0].title
+    for (var i = 0; i < scrollflyto.length; i++) {
+      console.log(scrollflyto[i].title)
+      if (isElementOnScreen(scrollflyto[i].title)) {
+        setActiveChapter(scrollflyto[i].title, i)
+        break
+      }
+    }
 
+    function setActiveChapter(chapterName, i) {
+      if (chapterName === activeName) return
+
+      map.flyTo(scrollflyto[i])
+
+      document.getElementById(chapterName).setAttribute('class', 'active')
+      document.getElementById(activeName).setAttribute('class', '')
+
+      activeName = chapterName
+    }
+
+    function isElementOnScreen(id) {
+      var element = document.getElementById(id)
+      var bounds = element.getBoundingClientRect()
+      return bounds.top < window.innerHeight && bounds.bottom > 0
+    }
+    const position = window.pageYOffset
+    setSrollPosition(position)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+*/
   // construct the map within an effect that has no dependencies
   // this allows us to construct it only once at the time the
   // component is constructed.
@@ -147,12 +186,12 @@ Map.propTypes = {
 Map.defaultProps = {
   width: 'auto',
   height: '100%',
-  center: [0, 0],
-  zoom: 0,
+  center: [7.221275, 50.326111],
+  zoom: 17.5,
   bounds: null,
   minZoom: 0,
   maxZoom: 24,
-  styles: ['light-v9', 'dark-v9', 'streets-v11'],
+  styles: ['streets-v11', 'light-v9', 'dark-v9'],
   padding: 0.1, // padding around bounds as a proportion
   sources: {},
   layers: [],

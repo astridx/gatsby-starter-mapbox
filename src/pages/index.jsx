@@ -5,6 +5,7 @@ import { Container } from 'components/Grid'
 import { Link } from 'components/Link'
 import Map from 'components/Map'
 import styled from 'style'
+import Scrollflyto from '../components/Scrollflyto/Scrollflyto'
 
 const Section = styled.section`
   h3 {
