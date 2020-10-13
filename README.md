@@ -1,6 +1,6 @@
 # Gatsby starter with Mapbox GL
 
-This starter https://github.com/brendan-ward/gatsby-starter-mapbox gets you going quickly with Mapbox GL in Gatsby. It uses React hooks to wrap the Mapbox GL JS object and I build my examples on this repo.
+This starter is build on the starter https://github.com/brendan-ward/gatsby-starter-mapbox. It gets you going quickly with Mapbox GL in Gatsby. It uses React hooks to wrap the Mapbox GL JS object and I build my examples on this repo.
 
 Because Mapbox GL is provided as a native JS object within `components/Map/index.jsx`, instead of a React Component, you need to coordinate application state directly with the map object.
 
