@@ -1,5 +1,14 @@
 export default [
   {
+    title: 'Bitte scrollen Sie nach unten,',
+    text:
+      'um weitere Sehenswürdigkeiten zu sehen.',
+    bearing: 27,
+    center: [7.2212, 50.3261],
+    zoom: 16.5,
+    pitch: 20,
+  },
+  {
     title: 'Genovevaburg',
     text:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
@@ -16,6 +25,7 @@ export default [
     center: [7.222546, 50.327054],
     bearing: 150,
     zoom: 18,
+    speed: 1.1,
     pitch: 0,
   },
   {
@@ -25,7 +35,6 @@ export default [
     bearing: 90,
     center: [7.21869, 50.328],
     zoom: 17,
-    speed: 0.6,
     pitch: 40,
   },
   {
