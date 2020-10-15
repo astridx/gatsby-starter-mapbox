@@ -7,6 +7,7 @@
   "dependencies": {
     "@mapbox/geo-viewport": "^0.4.0",
     "@rebass/grid": "^6.0.0",
+    "axios": "^0.20.0",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.24.73",
     "gatsby-image": "^2.0.41",
@@ -24,6 +25,7 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "immutable": "^4.0.0-rc.12",
     "mapbox-gl": "^1.12.0",
+    "mapbox-gl-directions": "^3.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
