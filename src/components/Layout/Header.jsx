@@ -67,8 +67,8 @@ const Header = () => (
       <NavLink to="/map-full" activeClassName="nav-active">
         Full Screen Map
       </NavLink>
-      <NavLink to="/map-route" activeClassName="nav-active">
-        Map with Route
+      <NavLink to="/map-direction" activeClassName="nav-active">
+        Map with Direction
       </NavLink>
       <NavLink to="/scrollflyto" activeClassName="nav-active">
         Scroll Fly To

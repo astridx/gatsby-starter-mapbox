@@ -10,7 +10,6 @@ import { Box, Flex } from 'components/Grid'
 const MapPage = () => {
   const [scrollPosition, setSrollPosition] = useState(0)
   const handleScroll = () => {
-    console.log('kkkkk')
     var activeName = scrollflyto[0].title
     for (var i = 0; i < scrollflyto.length; i++) {
       if (isElementOnScreen(scrollflyto[i].title)) {

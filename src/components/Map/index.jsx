@@ -3,11 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import scrollflyto from '../../constants/scrollflyto'
 import styled from 'style'
 import { hasWindow } from 'util/dom'
 import { getCenterAndZoom } from './util'
 import StyleSelector from './StyleSelector'
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
+
 
 import { siteMetadata } from '../../../gatsby-config'
 
@@ -31,6 +32,7 @@ const Map = ({
   layers,
   minZoom,
   maxZoom,
+  directions,
 }) => {
   const { mapboxToken } = siteMetadata
 
@@ -51,46 +53,6 @@ const Map = ({
   // this ref holds the map object once we have instantiated it, so that we
   // can use it in other hooks
   const mapRef = useRef(null)
-  /*
-  const [scrollPosition, setSrollPosition] = useState(0)
-  const handleScroll = () => {
-    var activeName = scrollflyto[0].title
-    for (var i = 0; i < scrollflyto.length; i++) {
-      console.log(scrollflyto[i].title)
-      if (isElementOnScreen(scrollflyto[i].title)) {
-        setActiveChapter(scrollflyto[i].title, i)
-        break
-      }
-    }
-
-    function setActiveChapter(chapterName, i) {
-      if (chapterName === activeName) return
-
-      map.flyTo(scrollflyto[i])
-
-      document.getElementById(chapterName).setAttribute('class', 'active')
-      document.getElementById(activeName).setAttribute('class', '')
-
-      activeName = chapterName
-    }
-
-    function isElementOnScreen(id) {
-      var element = document.getElementById(id)
-      var bounds = element.getBoundingClientRect()
-      return bounds.top < window.innerHeight && bounds.bottom > 0
-    }
-    const position = window.pageYOffset
-    setSrollPosition(position)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-*/
   // construct the map within an effect that has no dependencies
   // this allows us to construct it only once at the time the
   // component is constructed.
@@ -146,6 +108,28 @@ const Map = ({
       layers.forEach(layer => {
         map.addLayer(layer)
       })
+
+      var direction;
+      directions.forEach(directionData => {
+
+        directionData.pois.forEach(poi => {
+          new mapboxgl.Marker()
+            .setLngLat([poi[0],poi[1]])
+            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(
+              poi[2]
+            ))
+            .addTo(map);
+        })
+        direction = new MapboxDirections(directionData);
+        direction.setOrigin(directionData.origin);
+        direction.setDestination(directionData.destination);
+        map.addControl(direction, 'top-right');
+
+
+
+
+      })
+
     })
 
     // hook up map events here, such as click, mouseenter, mouseleave
