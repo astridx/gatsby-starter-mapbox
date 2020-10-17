@@ -1,13 +1,13 @@
 /* eslint-disable max-len, no-underscore-dangle */
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
+
 import styled from 'style'
 import { hasWindow } from 'util/dom'
 import { getCenterAndZoom } from './util'
 import StyleSelector from './StyleSelector'
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 
 import { siteMetadata } from '../../../gatsby-config'
 
@@ -31,7 +31,6 @@ const Map = ({
   layers,
   minZoom,
   maxZoom,
-  directions,
 }) => {
   const { mapboxToken } = siteMetadata
 
@@ -52,6 +51,7 @@ const Map = ({
   // this ref holds the map object once we have instantiated it, so that we
   // can use it in other hooks
   const mapRef = useRef(null)
+
   // construct the map within an effect that has no dependencies
   // this allows us to construct it only once at the time the
   // component is constructed.
@@ -107,20 +107,6 @@ const Map = ({
       layers.forEach(layer => {
         map.addLayer(layer)
       })
-
-      var direction
-      directions.forEach(directionData => {
-        directionData.pois.forEach(poi => {
-          new mapboxgl.Marker()
-            .setLngLat([poi[0], poi[1]])
-            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(poi[2]))
-            .addTo(map)
-        })
-        direction = new MapboxDirections(directionData)
-        direction.setOrigin(directionData.origin)
-        direction.setDestination(directionData.destination)
-        map.addControl(direction, 'top-right')
-      })
     })
 
     // hook up map events here, such as click, mouseenter, mouseleave
@@ -156,22 +142,20 @@ Map.propTypes = {
   padding: PropTypes.number,
   sources: PropTypes.object,
   layers: PropTypes.arrayOf(PropTypes.object),
-  directions: PropTypes.arrayOf(PropTypes.object),
 }
 
 Map.defaultProps = {
   width: 'auto',
   height: '100%',
-  center: [7.221275, 50.326111],
-  zoom: 9.5,
+  center: [0, 0],
+  zoom: 0,
   bounds: null,
   minZoom: 0,
   maxZoom: 24,
-  styles: ['streets-v11', 'light-v9', 'dark-v9'],
+  styles: ['light-v9', 'dark-v9', 'streets-v11'],
   padding: 0.1, // padding around bounds as a proportion
   sources: {},
   layers: [],
-  directions: [],
 }
 
 export default Map
