@@ -1,6 +1,6 @@
 import React from 'react'
 import SingleScrollflyto from './SingleScrollflyto'
-import styled, { themeGet } from 'style'
+import styled from 'style'
 
 const Scrollflyto = props => {
   return (

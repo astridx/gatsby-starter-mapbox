@@ -48,6 +48,30 @@ Open up a new tab in your browser and navigate to http://localhost:8000/
 
 Perfect! This is the beginning of your very Gatsby MapBox JS GL site! 
 
+## Map
+
+```
+width: 'auto',
+height: '100%',
+center: [7.221275, 50.326111],
+zoom: 9.5,
+bounds: null,
+minZoom: 0,
+maxZoom: 24,
+styles: ['streets-v11', 'light-v9', 'dark-v9'],
+padding: 0.1,
+sources: {},
+layers: [],
+directions: [],
+```
+
+```
+<Map 
+  sources={sources} 
+  layers={layers} 
+
+/>
+```
 ## Features
 
 There is a menu item for each example.
@@ -67,6 +91,14 @@ Option | Description
 bearing | The initial bearing (rotation) of the map, measured in degrees counter-clockwise from north. If bearing is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object. If it is not specified in the style, either, it will default to 0 .
 pitch | The initial pitch (tilt) of the map, measured in degrees away from the plane of the screen (0-60). If pitch is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object. If it is not specified in the style, either, it will default to 0 .
 --- | ---
+
+### Find elevations with the Tilequery API / Höhenangaben mit der Tilequery-API finden
+
+
+
+
+### Swipe between maps / Karten vergleichen per Wischtechnik
+
 
 
 
