@@ -67,6 +67,9 @@ const Header = () => (
       <NavLink to="/map-full" activeClassName="nav-active">
         Full Screen Map
       </NavLink>
+      <NavLink to="/map-full-plus-find-elevation" activeClassName="nav-active">
+        Find Elevation
+      </NavLink>
       <NavLink to="/map-direction" activeClassName="nav-active">
         Map with Direction
       </NavLink>

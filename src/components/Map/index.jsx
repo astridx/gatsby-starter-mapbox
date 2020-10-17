@@ -9,7 +9,6 @@ import { getCenterAndZoom } from './util'
 import StyleSelector from './StyleSelector'
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 
-
 import { siteMetadata } from '../../../gatsby-config'
 
 // This wrapper must be positioned relative for the map to be able to lay itself out properly
@@ -109,27 +108,19 @@ const Map = ({
         map.addLayer(layer)
       })
 
-      var direction;
+      var direction
       directions.forEach(directionData => {
-
         directionData.pois.forEach(poi => {
           new mapboxgl.Marker()
-            .setLngLat([poi[0],poi[1]])
-            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(
-              poi[2]
-            ))
-            .addTo(map);
+            .setLngLat([poi[0], poi[1]])
+            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(poi[2]))
+            .addTo(map)
         })
-        direction = new MapboxDirections(directionData);
-        direction.setOrigin(directionData.origin);
-        direction.setDestination(directionData.destination);
-        map.addControl(direction, 'top-right');
-
-
-
-
+        direction = new MapboxDirections(directionData)
+        direction.setOrigin(directionData.origin)
+        direction.setDestination(directionData.destination)
+        map.addControl(direction, 'top-right')
       })
-
     })
 
     // hook up map events here, such as click, mouseenter, mouseleave
@@ -165,13 +156,14 @@ Map.propTypes = {
   padding: PropTypes.number,
   sources: PropTypes.object,
   layers: PropTypes.arrayOf(PropTypes.object),
+  directions: PropTypes.arrayOf(PropTypes.object),
 }
 
 Map.defaultProps = {
   width: 'auto',
   height: '100%',
   center: [7.221275, 50.326111],
-  zoom: 17.5,
+  zoom: 9.5,
   bounds: null,
   minZoom: 0,
   maxZoom: 24,
@@ -179,6 +171,7 @@ Map.defaultProps = {
   padding: 0.1, // padding around bounds as a proportion
   sources: {},
   layers: [],
+  directions: [],
 }
 
 export default Map

@@ -6,10 +6,9 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import directionData from '../constants/directions'
 
 const MapPage = () => {
-
   return (
     <Layout title="Full Screen Map with Route">
-      <Map directions={directionData}/>
+      <Map directions={directionData} />
     </Layout>
   )
 }

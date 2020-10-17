@@ -1,8 +1,7 @@
 export default [
   {
     title: 'Bitte scrollen Sie nach unten,',
-    text:
-      'um weitere Sehenswürdigkeiten zu sehen.',
+    text: 'um weitere Sehenswürdigkeiten zu sehen.',
     bearing: 27,
     center: [7.2212, 50.3261],
     zoom: 16.5,
