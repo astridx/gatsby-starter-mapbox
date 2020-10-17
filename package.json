@@ -26,6 +26,7 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "immutable": "^4.0.0-rc.12",
     "mapbox-gl": "^1.12.0",
+    "mapbox-gl-compare": "^0.4.0",
     "mapbox-gl-directions": "^3.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

@@ -73,6 +73,9 @@ const Header = () => (
       <NavLink to="/map-direction" activeClassName="nav-active">
         Map with Direction
       </NavLink>
+      <NavLink to="/map-swipe" activeClassName="nav-active">
+        Compare
+      </NavLink>
       <NavLink to="/scrollflyto" activeClassName="nav-active">
         Scroll Fly To
       </NavLink>
